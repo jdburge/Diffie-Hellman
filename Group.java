@@ -1,0 +1,16 @@
+/**
+ * Jeff Burge, Hunter Dinkins, Kei Takazawa
+ * Group Interface
+ * Utilized for Diffie-Hellman Encryption
+ * Wheaton College Spring 2016
+ * 4/18/16
+ */
+
+
+public interface Group {
+    
+    public Element createElement(BigInteger[] info);
+
+    public Element getKey();
+
+}

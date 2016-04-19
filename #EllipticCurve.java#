@@ -1,0 +1,56 @@
+/**
+ * Jeff Burge, Hunter Dinkins, Kei Takazawa
+ * Elliptic Curve Group
+ * Utilized for Diffie-Hellman Encryption
+ * Wheaton College Spring 2016
+ * 4/18/16
+ */
+
+import java.util.*;
+import java.io.*;
+import java.math.*;
+
+public class EllipticCurve implements Group{
+
+    // data
+    private int p;
+    private BigInteger a;
+    private BigInteger b;
+    // Generating point?
+    private BigInteger x;
+    private BigInteger y;
+
+    private BigInteger exp;
+
+    public EllipticCurve(int p, BigInteger a, BigInteger b, BigInteger x, BigInteger y) {
+	this.p = p;
+	this.a = a;
+	this.b = b;
+	// Setting generating point?
+	this.x = x;
+	this.y = y;
+
+
+	exp = new BigInteger((int)(Math.random()*512)+512, new Random());
+    }
+
+    public CurveElement createElement(BigInteger[] info) {
+	return new CurveElement(info,this);
+    }
+
+    public CurveElement addition(CurveElement x, CurveElement y) {
+	// this is the actual function to fill in
+	
+    }
+
+    public CurveElement getKey() {
+	BigInteger[] info = new BigInteger[3];
+	info[0] = x;
+	info[1] = y;
+	info[2] = new BigInteger("0");
+	CurveElement g = createElement(info);
+
+	return g.selfAddition(exp);
+    }
+
+}
